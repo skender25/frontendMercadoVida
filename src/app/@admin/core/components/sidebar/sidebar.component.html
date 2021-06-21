@@ -1,0 +1,21 @@
+<!-- Sidebar-->
+<div class="border-end " id="sidebar-wrapper">
+  <div class="sidebar-heading  ">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  style="text-decoration: none;"
+      >Mercado Vida</a
+    >
+  </div> 
+  <div class="list-group list-group-flush">
+    <a [routerLink]="['/admin']" routerLinkActive="router-link-active"
+      class="list-group-item list-group-item-action list-group-item-light p-3"
+      
+      ><i class="fas fa-columns"></i> Dashboard</a
+    >
+    <a
+    [routerLink]="['/admin/users']" routerLinkActive="router-link-active"
+      class="list-group-item list-group-item-action list-group-item-light p-3"
+      
+      ><i class="fas fa-user-friends"></i> Users</a
+    >
+  </div>
+</div>

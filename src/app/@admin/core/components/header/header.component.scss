@@ -1,0 +1,12 @@
+@import  "./../../../pages/admin.component.scss";
+
+.shadow{
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+button#sidebarToggle {
+    background-color: transparent;
+    color: $admin-primary-color;
+    border-color: transparent;
+}
+
