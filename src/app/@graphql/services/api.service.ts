@@ -1,9 +1,9 @@
-//import { IRegisterForm } from '@core/interfaces/register.interface';
+import { IRegisterForm } from '../../@core/interfaces/register.interface';
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import { DocumentNode } from 'graphql';
-//import { REGISTER_USER } from '@graphql/operations/mutation/user';
+import { REGISTER_USER } from '../operations/mutations/user';
 
 @Injectable({
   providedIn: 'root'

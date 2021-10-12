@@ -1,0 +1,24 @@
+[
+    {
+      "id": "01",
+      "title": "Vegetales",
+      "description": "",
+      "url": "",
+      "background": "https://images.pexels.com/photos/4054850/pexels-photo-4054850.jpeg?cs=srgb&dl=pexels-vo-thuy-tien-4054850.jpg&fm=jpg"
+    },
+    {
+      "id": "02",
+      "title": "Frutas",
+      "description": "",
+      "url": "",
+      "background": "https://images.pexels.com/photos/1352243/pexels-photo-1352243.jpeg?cs=srgb&dl=pexels-lukas-1352243.jpg&fm=jpg"
+    },
+    {
+      "id": "03",
+      "title": "Vegetales ",
+      "description": "",
+      "url": "",
+      "background": "https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg?cs=srgb&dl=pexels-mark-stebnicki-2252584.jpg&fm=jpg"
+    }
+  ]
+  
