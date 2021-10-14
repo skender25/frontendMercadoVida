@@ -30,5 +30,8 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.resetSession();
   }
+  open(){
+    console.log('shopping cart open');
+  }
 
 }
