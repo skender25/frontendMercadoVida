@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { IMeData } from '@shop/core/interfaces/session.interface';
-
+import {Cartservice} from '../../services/cartservice.ts.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   access = false;
   role: string;
   userLabel = '';
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private shoppingCart: Cartservice) {
     this.authService.accessVar$.subscribe((result) => {
       console.log(result.status);
       this.session = result;
@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
     this.authService.resetSession();
   }
   open(){
+    this.shoppingCart.open();
     console.log('shopping cart open');
   }
 
