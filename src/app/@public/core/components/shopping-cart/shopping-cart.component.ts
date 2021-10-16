@@ -27,7 +27,17 @@ export class ShoppingCartComponent implements OnInit {
    this.cart =  this.shoppingCart.clear();
   }
   clearItem(product: IProduct){
-    product.qty = 0;
+    this.manageProductInfo(0, product);
+  }
+  changeValue(qty: number, product: IProduct){
+    console.log('valor qty actual', qty);
+    this.manageProductInfo(qty, product);
+  }
+  manageProductInfo(qty: number , product: IProduct){
+    product.qty = qty;
     this.shoppingCart.manageProduct(product);
+  }
+  // en este metodo se mandaría los correos a la empresa y a la persona que realiza el pedido
+  finalizarPedido(){
   }
 }
