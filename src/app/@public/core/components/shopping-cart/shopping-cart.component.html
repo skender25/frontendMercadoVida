@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-lg-2">
           <img class="img-fluid" [src]="product.img" [alt]="product.name">
-          <button class="btn btn-sm btn-danger mt-2 " (click)="clearItem(product)"> <i class="fa fa-trash" aria-hidden="true"></i>
+          <button class="btn btn-sm btn-danger mt-2 " (click)="clearItem(product)"> <i class="fas fa-times"></i>
           </button>
         </div>
         <div class="col-lg">
@@ -46,18 +46,18 @@
         </div>
       </div>
   </div>
-  <div class=" row product">
+  <div class=" row product" *ngIf="cart.total > 0">
     <div class="col-lg-5">
       Subtotal: {{cart.subtotal}}
     </div>
     <div class="col-lg">
-      Total a pagar:   <span class="text-primary float-right price-total" > ₡ {{cart.total}}</span>
+      Total a pagar:   <span class="text-primary float-right price-total" > ₡ {{cart.total | number}}</span>
     </div>
   </div>
   <hr>
-  <div class="ml-5 mr-5">
-    <button class="btn btn-danger mr-2" (click)="clear()"> Cancelar pedido</button>
-    <button class="btn  btn-success float-right mr-2" (click)="finalizarPedido()"> Realizar pedido </button>
+  <div class="ml-5 mr-5" *ngIf="cart.total > 0">
+    <button class="btn btn-danger mr-2" (click)="clear()"> <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Cancelar pedido</button>
+    <button class="btn  btn-success float-right mr-2" (click)="finalizarPedido()"> <i class="fas fa-check"></i> &nbsp; Realizar pedido </button>
   </div>
   </div>
  

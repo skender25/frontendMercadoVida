@@ -40,9 +40,7 @@ export class Cartservice {
         let actionUpdatedOk = false;
         for ( let i = 0; i < totalOfProducts; i++ ){
           if ( product.id === this.cart.products[i].id){
-            console.log('producto existe ');
             if ( product.qty === 0){
-              console.log('eliminando producto');
               this.cart.products.splice(i, 1);
             }else {
               this.cart.products[i] = product;
