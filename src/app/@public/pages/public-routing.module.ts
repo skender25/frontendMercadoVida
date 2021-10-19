@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
  {
-  path:'',
+  path: '',
   component: PublicComponent,
   children: [
     {
@@ -40,6 +40,10 @@ const routes: Routes = [
       path: 'reset/:token',
       loadChildren: () => import('./forms/change-password/change-password.module').then(m => m.ChangePasswordModule)
     },
+    {
+      path: 'checkout',
+      loadChildren: () => import('./forms/checkout/checkout.module').then(m => m.CheckoutModule)
+    }
   ]
   }
 

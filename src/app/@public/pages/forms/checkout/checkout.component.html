@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <app-checkout-resume></app-checkout-resume>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Información de pago</h4>
+            <form class="needs-validation" #f='ngForm' novalidate="">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label> <br>
+                <span> José </span>
+                </div>
+                <div class="col-md-6 mb-3">
+                <label for="lastName">Apellido/s</label>
+                <br>
+                <span> Solano Fallas </span>
+                </div>
+            </div>
+    
+            <div class="mb-3">
+                <label for="username">Email</label> <br>
+                <span> alsopupa@gmail.com </span>
+                
+            </div>
+    
+            <div class="mb-3">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required value={{ubicacionPed}}>
+                <div class="invalid-feedback">
+                    Por favor indique, con detalle, a que ubicación se debe de realizar el pedido 
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cellPhone">Número de contacto</label>
+                <input type="text" id="cellPhone" class="form-control" placeholder="8888-8888 " required value = {{numTelef}} />
+            </div>
+            <div class="mb-3">
+                <label for="deliveryDate">Dia para realizar entrega</label>
+                <input type="datetime-local" class="form-control" required value= {{fechaEntrega}}/>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-success btn-lg btn-block" type="submit" (click)="enviarNotificaciones(f)">Confirmar Pedido</button>
+            <hr class="mb-4 ">
+            <span class="text-muted"> Nuestro horario de entrega de pedidos es el siguiente, Miercoles o Sabados de 8 AM a 5 PM</span>
+            
+        </form>
+        </div>
+            
+    </div>
+</div>
+
