@@ -25,19 +25,19 @@
             </div>
     
             <div class="mb-3">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required value={{ubicacionPed}}>
+                <label for="address">Ubicación Domicilio</label>
+                <input type="text" class="form-control" id="address" placeholder="San José Centro" required [(ngModel)]="ubicacionPed" value='' name="ubicacionPed">
                 <div class="invalid-feedback">
                     Por favor indique, con detalle, a que ubicación se debe de realizar el pedido 
                 </div>
             </div>
             <div class="mb-3">
                 <label for="cellPhone">Número de contacto</label>
-                <input type="text" id="cellPhone" class="form-control" placeholder="8888-8888 " required value = {{numTelef}} />
+                <input type="text" id="cellPhone" class="form-control" placeholder="8888-8888 " required [(ngModel)]="numTelef" value="" name="numTelef" (keyup)="formatoCel($event.target.value)" />
             </div>
             <div class="mb-3">
                 <label for="deliveryDate">Dia para realizar entrega</label>
-                <input type="datetime-local" class="form-control" required value= {{fechaEntrega}}/>
+                <input type="datetime-local" class="form-control" required [(ngModel)]="fechaEntrega" value='' name="fechaEntrega" (ngModelChange)="validarFecha($event)"/>
             </div>
             <hr class="mb-4">
             <button class="btn btn-success btn-lg btn-block" type="submit" (click)="enviarNotificaciones(f)">Confirmar Pedido</button>
