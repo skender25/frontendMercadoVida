@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ACTIVE_USER, REGISTER_USER } from '@graphql/operations/mutations/user';
+import { ACTIVE_USER, REGISTER_USER, SEND_EMAIL } from '@graphql/operations/mutations/user';
 import { USERS_LIST_QUERY } from '@graphql/operations/query/user';
 import { ApiService } from '@graphql/services/api.service';
 import { IRegisterForm } from '@shop/core/interfaces/register.interface';
@@ -50,5 +50,15 @@ export class UsersService extends ApiService{
       }).pipe(map((result: any) => {
         return result.activeUserAction;
       }));
+  }
+  notificaciones(mail){
+    console.log('enviando correo ');
+    return this.set(SEND_EMAIL, {
+        mail
+    }
+    ).pipe((result: any) => {
+      console.log('correo enviado ' , result.sendEmail);
+      return result.sendEmail;
+    });
   }
 }

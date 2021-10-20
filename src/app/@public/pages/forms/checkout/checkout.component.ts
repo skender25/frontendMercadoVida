@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '@core/services/auth.service';
 import { basicAlert } from '@shared/alerts/toasts';
 import { TYPE_ALERT } from '@shared/alerts/values.config';
+import { IMeData } from '@shop/core/interfaces/session.interface';
+import { UsersService } from '@core/services/users.service';
+import {Cartservice} from '../../../core/services/cartservice.ts.service';
+import { ICart } from '@shop/core/components/shopping-cart/shopping-cart.interface';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -11,9 +17,26 @@ export class CheckoutComponent implements OnInit {
  numTelef = '';
  fechaEntrega;
  fechaActual = new Date (Date.now());
-  constructor() { }
+ meData: IMeData;
+ cart: ICart;
+  constructor(private auth: AuthService, private router: Router, private userService: UsersService, private shoppingCart: Cartservice) {
+    this.auth.accessVar$.subscribe((data: IMeData) => {
+      if (!data.status){
+        this.router.navigate(['/login']);
+        return;
+      }
+      this.meData = data;
+    });
+    this.shoppingCart.itemsVar$.subscribe(( data: ICart) => {
+      if ( data !== undefined && data !== null ){
+        this.cart = data;
+    }
+    });
+   }
 
   ngOnInit(): void {
+    this.auth.start();
+    this.cart = this.shoppingCart.initialize();
     }
 
 
@@ -21,6 +44,19 @@ export class CheckoutComponent implements OnInit {
       if (this.numTelef === '' || this.fechaEntrega === undefined || this.ubicacionPed === ''){
         basicAlert(TYPE_ALERT.WARNING, 'Debe de llenar todos los campos del formulario para poder proceder');
       } else{
+        const  email = {
+          to: this.meData.user.email,
+          subject: 'Creación exitosa de pedido',
+          html: `Estimado cliente ${this.meData.user.name} ${this.meData.user.lastname}, este correo tiene como proposito el informarle que su pedido a sido creado de manera corecta,
+          la entrega se realizará el ${this.fechaEntrega}, en ${this.ubicacionPed}, el mismo tiene un precio de ₡ ${this.cart.total}, muchas gracias por elegirnos.`
+        };
+        // se envia correo al cliente primero, despues a la compañia
+        console.log('result1 ' + this.userService.notificaciones(email));
+        email.subject = 'Nuevo Pedido ';
+        email.to = 'mercadovidabd@gmail.com';
+        email.html = `<p> El cliente ${this.meData.user.name} ${this.meData.user.lastname}, ha realizado un pedido,
+        el mismo debe de ser entregado el  ${this.fechaEntrega}, en ${this.ubicacionPed},  precio del pedido ₡ ${this.cart.total}. </p>`;
+        console.log('result2 ' + this.userService.notificaciones(email));
       }
     }
     formatoCel(valor){
