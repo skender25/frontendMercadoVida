@@ -45,15 +45,7 @@ export const ACTIVE_USER = gql`
     }
   }
 `;
-export const SEND_EMAIL = gql`
-  mutation notificaciones($mail: MailInput!) {
-    sendEmail(mail: $mail) {
-        status,
-        message
-      }
-  }
-  `
-;
+
 
 
 
