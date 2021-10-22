@@ -61,7 +61,7 @@ export async function formBasicDialog(
       preConfirm: () => {
         const value = (document.getElementById('name') as HTMLInputElement).value;
         const values = (document.getElementById('names') as HTMLInputElement).value;
-        const catregoria = (document.getElementById('catregoria') as HTMLInputElement).value;
+        const catregoria = (document.getElementById('catregoria') as HTMLSelectElement).value;
         const imagen = (document.getElementById('imagen') as HTMLInputElement).value;
         const precio_unidad = (document.getElementById('precio_unidad') as HTMLInputElement).value;
         const cantidad_disp = (document.getElementById('cantidad_disp') as HTMLInputElement).value;
