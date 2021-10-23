@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row" *ngIf = "productsList.length > 0">
     <div
       class="col-lg-3"
-      *ngFor="let p of productsList"
+      *ngFor="let p of productsList" 
       style="margin-bottom: 12px; margin-left: 5%;"
     >
       <shop-product-item
@@ -11,3 +11,5 @@
         (itemDetails)="showProductDetails($event)"
       ></shop-product-item>
     </div>
+</div>
+ <h5 class="text-center" *ngIf = "productsList.length == 0"> En este momento no contamos con productos de la categoía seleccionada </h5>

@@ -10,7 +10,14 @@ import {ProductsService} from '../../services/products.service';
 export class ProductCategoryListComponent implements OnInit {
   @Input() title = 'Título de la categoría';
   @Input() productsList: Array<IProduct> = [];
-  constructor(private shoppingCart: Cartservice, private productService: ProductsService ) { }
+  constructor(private shoppingCart: Cartservice, private productService: ProductsService ) {
+    this.productService.products$.subscribe((data: Array<IProduct>) => {
+      console.log('product cat res ', data);
+      if ( data !== undefined && data !== null ){
+        this.productsList = data;
+    }
+    });
+   }
 
   ngOnInit(): void {
     this.getProducts();

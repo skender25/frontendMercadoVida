@@ -38,6 +38,37 @@
           >Sobre Nosotros</a
         >
       </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/aboutp']"
+          routerLinkActive="router-link-active"
+          >Sobre Nosotros</a
+        >
+      </li>
+      <li class="nav-item dropdown" >
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownCat"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Categorias
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbarDropdownCat"
+        >
+          <a class="dropdown-item" (click)="categoria = 'verduras';filtarProductos() ">Verduras</a>
+          <a class="dropdown-item" (click)="categoria = 'vegetales';filtarProductos()">Vegetales</a>
+          <a class="dropdown-item" (click)="categoria = 'frutas';filtarProductos()">Frutas</a>
+          <a class="dropdown-item" (click)="resetearProductos()">Cargar Todos</a>
+          <a class="dropdown-item" (click)="categoria = 'otro';filtarProductos()">Otros</a>
+        </div>
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item" *ngIf="access && role == 'ADMIN'">
