@@ -15,6 +15,15 @@ export class ProductCategoryListComponent implements OnInit {
       console.log('product cat res ', data);
       if ( data !== undefined && data !== null ){
         this.productsList = data;
+        console.log(this.productsList[0]);
+        this.productsList.forEach( (product) =>  {
+          // tslint:disable-next-line:no-string-literal
+          product.price = product['precio_unidad'];
+          // tslint:disable-next-line:no-string-literal
+          product.img = product['imagen'];
+          // tslint:disable-next-line:no-string-literal
+          delete data['precio_unidad'];
+        });
     }
     });
    }
