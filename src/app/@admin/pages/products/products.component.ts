@@ -226,10 +226,10 @@ export class ProductsComponent implements OnInit {
       let imagenUrl;
       switch (categoria){
         case 'frutas':
-          imagenUrl = 'https://images.pexels.com/photos/1352243/pexels-photo-1352243.jpeg?cs=srgb&dl=pexels-lukas-1352243.jpg';
+          imagenUrl = 'https://images.pexels.com/photos/1352243/pexels-photo-1352243.jpeg?cs=srgb&dl=pexels-lukas-1352243.jpg&fm=jpg';
           break;
         case 'verduras':
-          imagenUrl = 'https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg?cs=srgb&dl=pexels-mark-stebnicki-2252584.jpg&fm=jpg'; 
+          imagenUrl = 'https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg?cs=srgb&dl=pexels-mark-stebnicki-2252584.jpg&fm=jpg';
           break;
         case 'vegetales':
           // tslint:disable-next-line:max-line-length
