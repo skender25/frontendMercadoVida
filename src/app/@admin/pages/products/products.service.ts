@@ -14,7 +14,7 @@ export class ProductsService extends ApiService{
   }
 
   add(product: string , productor: string , catregoria: string,imagen: string,
-    precio_unidad: string,cantidad_disp: string,org: string,unidad: string) {
+      precio_unidad: string,cantidad_disp: string,org: string,unidad: string) {
     return this.set(
       ADD_PRODUCT,
       {
@@ -34,10 +34,11 @@ export class ProductsService extends ApiService{
       }));
   }
 
-  update(id: string, product: string , productor: string, catregoria: string ,imagen: string,
-    precio_unidad: string,cantidad_disp: string,org: string,unidad: string ) {
-    console.log(id , product , productor,cantidad_disp ,precio_unidad, imagen,org,unidad);
-   return this.set(
+  update(id: string, product: string , productor: string, catregoria: string , imagen: string,
+         precio_unidad: string, cantidad_disp: string, org: string, unidad: string ) {
+    console.log('precio ', precio_unidad);
+    console.log('categoria ', catregoria);
+    return this.set(
       MODIFY_PRODUCT,
       {
         id,

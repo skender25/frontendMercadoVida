@@ -21,6 +21,7 @@ export class CheckoutComponent implements OnInit {
  fechaActual = new Date (Date.now());
  meData: IMeData;
  cart: ICart;
+ pedidoCompletado = false;
   constructor(private auth: AuthService, private router: Router, private shoppingCart: Cartservice, private mailService: MailService) {
     this.auth.accessVar$.subscribe((data: IMeData) => {
       if (!data.status){
@@ -90,21 +91,28 @@ export class CheckoutComponent implements OnInit {
         const mes = this.obtenerMes(fechaEntr.getMonth());
         const min = (fechaEntr.getMinutes() < 10 ) ? '0' + fechaEntr.getMinutes().toString() : fechaEntr.getMinutes();
         const horaEntregaEstandar = fechaEntr.toLocaleString('en-US', { hour: 'numeric', hour12: true });
-        console.log( 'prueba  ' + horaEntregaEstandar[0]);
+        let productosPedido = 'El pedido contiene los siguientes productos:';
+        this.cart.products.forEach((product) => {
+          productosPedido += `<li> ${product.name} - ${product.qty} uds - precio: ₡ ${product.price} </li>`;
+        });
         const  mail: IMail = {
           to: this.meData.user.email,
           subject: 'Creación exitosa de pedido',
           html: `Estimado cliente ${this.meData.user.name} ${this.meData.user.lastname}, este correo tiene como proposito el informarle que su pedido a sido creado de manera corecta,
-          la entrega se realizará el día  ${dia} ${fechaEntr.getDate()} de ${mes} del ${fechaEntr.getFullYear()} a la/s ${horaEntregaEstandar[0]}:${min} ${horaEntregaEstandar.substr(2)}, en ${this.ubicacionPed}, el mismo tiene un precio de ₡ ${this.cart.total}, muchas gracias por elegirnos.`
+          la entrega se realizará el día  ${dia} ${fechaEntr.getDate()} de ${mes} del ${fechaEntr.getFullYear()} a la/s ${horaEntregaEstandar[0]}:${min} ${horaEntregaEstandar.substr(2)}, en ${this.ubicacionPed}, el mismo tiene un precio de ₡ ${this.cart.total}.<br>
+          <ul> ${productosPedido}</ul> </br>
+          Muchas gracias por elegirnos.`
         };
         this.mailService.send(mail).pipe(take(1)).subscribe();
         // se envia correo al cliente primero, despues a la compañia
         mail.subject = 'Nuevo Pedido ';
         mail.to = 'mercadovidabd@gmail.com';
         mail.html = `<p> El cliente ${this.meData.user.name} ${this.meData.user.lastname}, ha realizado un pedido,
-        el mismo debe de ser entregado el día ${dia} ${fechaEntr.getDate()} de ${mes} del ${fechaEntr.getFullYear()} a la/s ${horaEntregaEstandar[0]}:${min} ${horaEntregaEstandar.substr(2)} , en ${this.ubicacionPed}, número de contacto del cliente: ${this.numTelef},  precio del pedido ₡ ${this.cart.total}. </p>`;
+        el mismo debe de ser entregado el día ${dia} ${fechaEntr.getDate()} de ${mes} del ${fechaEntr.getFullYear()} a la/s ${horaEntregaEstandar[0]}:${min} ${horaEntregaEstandar.substr(2)} , en ${this.ubicacionPed}, número de contacto del cliente: ${this.numTelef},  precio del pedido ₡ ${this.cart.total}. </p> <br>
+        <ul> ${productosPedido}</ul> </br>`;
         // cuando se ponga en podruccion se debe de descomentar la linea de abajo y eliminar este comentario
         /* this.mailService.send(mail).pipe(take(1)).subscribe();*/
+        this.pedidoCompletado = true;
       }
     }
     obtenerMes(numMes){

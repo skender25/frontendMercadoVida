@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="pedidoCompletado == false">
         <div class="col-md-4 order-md-2 mb-4">
           <app-checkout-resume></app-checkout-resume>
         </div>
@@ -48,5 +48,9 @@
         </div>
             
     </div>
+    <h5 class="text-center" *ngIf = "pedidoCompletado"> ¡Su Pedido se ha creado de manera correcta! </h5>
+    <br>
+    <h5 class="text-center" *ngIf = "pedidoCompletado">  Por favor revisar el correo registrado en el sistema ({{meData.user.email}}) para obtener más información</h5>
+
 </div>
 

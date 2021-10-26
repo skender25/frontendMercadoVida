@@ -20,9 +20,15 @@ export class ProductCategoryListComponent implements OnInit {
           // tslint:disable-next-line:no-string-literal
           product.price = product['precio_unidad'];
           // tslint:disable-next-line:no-string-literal
-          product.img = product['imagen'];
-          // tslint:disable-next-line:no-string-literal
           delete data['precio_unidad'];
+          // tslint:disable-next-line:no-string-literal
+          product.img = product['imagen'];
+           // tslint:disable-next-line:no-string-literal
+          delete data['imagen'];
+          // tslint:disable-next-line:no-string-literal
+          product.stock = product['cantidad_disp'];
+           // tslint:disable-next-line:no-string-literal
+          delete data['cantidad_disp'];
         });
     }
     });
