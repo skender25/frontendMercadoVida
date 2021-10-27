@@ -3,6 +3,8 @@ import { AuthService } from '@core/services/auth.service';
 import { IMeData } from '@shop/core/interfaces/session.interface';
 import {Cartservice} from '../../services/cartservice.ts.service';
 import {ProductsService} from '../../../../@core/services/products.service';
+import { ICart } from '../shopping-cart/shopping-cart.interface';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,6 +15,7 @@ export class NavbarComponent implements OnInit {
   session: IMeData = {
     status: false
   };
+  productosTotales = 0;
   access = false;
   role: string;
   userLabel = '';
@@ -24,9 +27,16 @@ export class NavbarComponent implements OnInit {
       this.role = this.session.user?.Role;
       this.userLabel = `${ this.session.user?.name } ${ this.session.user?.lastname }`;
       console.log(this.role);
+      this.shoppingCart.itemsVar$.subscribe((resp: ICart) => {
+        if (resp !== null && resp !== undefined ){
+          this.productosTotales =  resp.subtotal;
+        }
+      });
     });
   }
   ngOnInit(): void {
+   const cart =  this.shoppingCart.initialize();
+   this.productosTotales = cart.subtotal;
   }
 
   logout() {

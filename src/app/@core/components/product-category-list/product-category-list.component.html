@@ -13,3 +13,34 @@
     </div>
 </div>
  <h5 class="text-center" *ngIf = "productsList.length == 0"> En este momento no contamos con productos de la categoía seleccionada </h5>
+
+ <ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Información del Producto: {{productoSeleccionado.name}}</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="price">Precio </label>
+        <div class="input-group">
+          <input name="price" id="price" class="form-control"  readonly ='' value = {{productoSeleccionado.price}} >
+        </div>
+        <label for="stock"> Cantidad actual </label>
+        <div class="input-group">
+          <input name="stock" id="stock" class="form-control"  readonly ='' value = {{productoSeleccionado.stock}} >
+        </div>
+        <label for="Productor"> Productor </label>
+        <div class="input-group">
+          <input name="Productor" id="Productor" class="form-control"  readonly ='' value = {{productoSeleccionado.productor}} >
+        </div>
+        <label *ngIf="productoSeleccCarrito" for="added"> Agredado al carrito </label>
+        <div *ngIf="productoSeleccCarrito" class="input-group">
+          <input  type="checkbox" name="added" id="added" class="form-control" [checked]="productoSeleccCarrito" (click)="eliminarProducto()" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Cross click')">Cerrar</button>
+  </div>
+</ng-template>

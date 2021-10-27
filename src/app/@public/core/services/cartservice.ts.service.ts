@@ -91,4 +91,16 @@ export class Cartservice {
   document.getElementById('overlay').style.display = 'none';
   document.getElementById('app').style.overflow = 'auto';
   }
+  checkForProduct(proudctId){
+    console.log('checkForProduct ', proudctId);
+    for (let i = 0; i < this.cart.products.length; i++){
+      // se checkea si el producto existe en el carrito
+      if (proudctId === this.cart.products[i].id){
+        // el producto existe
+        i = this.cart.products.length;
+        return true;
+      }
+    }
+    return false;
+  }
 }

@@ -118,11 +118,15 @@
         </div>
       </li>
       <li class="nav-item" *ngIf="access">
+       
         <a
           class="nav-link"
           (click)="open()"
-          ><i class="fas fa-shopping-cart"></i> </a
+          ><i class="fas fa-shopping-cart"></i> 
+          <span class="badge badge-primary notification">{{productosTotales}}</span>
+           </a
         >
+       
       </li>
     </ul>
   </div>
