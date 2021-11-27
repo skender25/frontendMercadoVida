@@ -33,7 +33,7 @@
         <div class="input-group">
           <input name="Productor" id="Productor" class="form-control"  readonly ='' value = {{productoSeleccionado.productor}} >
         </div>
-        <label *ngIf="productoSeleccCarrito" for="added"> Agredado al carrito </label>
+        <label *ngIf="productoSeleccCarrito" for="added"> Agregado al carrito </label>
         <div *ngIf="productoSeleccCarrito" class="input-group">
           <input  type="checkbox" name="added" id="added" class="form-control" [checked]="productoSeleccCarrito" (click)="eliminarProducto()" >
         </div>
