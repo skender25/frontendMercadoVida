@@ -25,8 +25,7 @@ export class GraphqlModule {
         console.log('Pinche Errors', networkError);
       }
     });
-const uri = 'https://mercado-vida.herokuapp.com/graphql';
-    //const uri = 'http://localhost:2002/graphql';
+    const uri = 'https://mercado-vida.herokuapp.com/graphql';
     const link = ApolloLink.from(
       [
         errorLink,

@@ -8,14 +8,14 @@
     </div>
     <div *ngFor="let product of cart.products" class="card product"> 
       <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-2 col-sm-2">
           <img class="img-fluid" [src]="product.img" [alt]="product.name">
           <button class="btn btn-sm btn-danger mt-2 " (click)="clearItem(product)"> <i class="fas fa-times"></i>
           </button>
         </div>
-        <div class="col-lg">
+        <div class="col-lg col-sm">
           <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-9 col-sm-9">
               <h6>{{product.name}}</h6>
               <shop-qty-selector
               [qty]="product.qty"
@@ -24,7 +24,7 @@
               >
               </shop-qty-selector>
             </div>
-            <div class="col-lg">
+            <div class="col-lg col-sm">
               <ng-template #noDiscount>
                 <div class="price">
                   ₡ {{product.price}}
@@ -47,17 +47,17 @@
       </div>
   </div>
   <div class=" row product" *ngIf="cart.total > 0">
-    <div class="col-lg-5">
+    <div class="col-lg-5 col-sm-5">
       Subtotal: {{cart.subtotal}}
     </div>
-    <div class="col-lg">
-      Total a pagar:   <span class="text-primary float-right price-total" > ₡ {{cart.total | number}}</span>
+    <div class="col-lg col-sm">
+      Total a pagar:   <span id="priceTag" class="text-primary float-right price-total" > ₡ {{cart.total | number}}</span>
     </div>
   </div>
   <hr>
-  <div class="ml-5 mr-5" *ngIf="cart.total > 0">
-    <button class="btn btn-danger mr-2" (click)="clear()"> <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Cancelar pedido</button>
-    <button class="btn  btn-success float-right mr-2" (click)="finalizarPedido()"> <i class="fas fa-check"></i> &nbsp; Realizar pedido </button>
+  <div class="d-flex justify-content-center justify-content-md-center justify-content-sm-center" *ngIf="cart.total > 0">
+    <button class="btn btn-danger mr-2 mr-sm-2  btnCan" (click)="clear()"> <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Cancelar pedido</button>
+    <button class="btn  btn-success btnFin" (click)="finalizarPedido()"> <i class="fas fa-check"></i> &nbsp; Realizar pedido </button>
   </div>
   </div>
  
