@@ -37,6 +37,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
    const cart =  this.shoppingCart.initialize();
    this.productosTotales = cart.subtotal;
+   this.shoppingCart.close();
   }
 
   logout() {
