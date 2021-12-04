@@ -70,17 +70,14 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   } 
+  @media screen and (max-width: 428px) {
+    #mySidenav {
+      width: 0px ;
+    }
+  } 
   @media screen and (max-width: 412px){
     #mySidenav {
-      width: 412px !important;
-    }
-    #overlay {
-      
-      display: block;
-    }
-    #app 
-    {
-      overflow: hidden;
+      width: 0px;
     }
     .priceTag{
       float:none;
@@ -90,14 +87,7 @@
   }
   @media screen and (max-width: 375px){
     #mySidenav {
-      width: 290px !important;
-    }
-    #overlay {
-      display: block;
-    }
-    #app 
-    {
-      overflow: hidden;
+      width: 0px;
     }
     #priceTag{
       margin-left: 90px !important;
@@ -106,14 +96,7 @@
   }
   @media screen and (max-width: 360px){
     #mySidenav {
-      width: 290px !important;
-    }
-    #overlay {
-      display: block;
-    }
-    #app 
-    {
-      overflow: hidden;
+      width: 0px;
     }
     #priceTag{
       margin-right: 30px;
